@@ -15,7 +15,7 @@ lr-mess can be given a **command file**: a text file holding a MAME command line
 | File | Goes in | What it does |
 |---|---|---|
 | `mess-electron.sh` | `/opt/retropie/configs/electron/` | Acorn Electron launcher |
-| `retroarch.cfg` | `/opt/retropie/configs/electron/` | RetroArch settings for the Electron |
+| `retroarch.cfg` | `/opt/retropie/configs/electron/` | RetroArch settings for the Electron (my personal preferences - see below) |
 | `mess-zx.sh` | `/opt/retropie/configs/zxspectrum/` | ZX Spectrum launcher |
 | `mess-gnw.sh` | `/opt/retropie/configs/gameandwatch/` | Game & Watch launcher |
 
@@ -30,7 +30,15 @@ lr-mess can be given a **command file**: a text file holding a MAME command line
 
 Any other file type is treated as a tape.
 
-**`retroarch.cfg`** is the Electron's own RetroArch settings file. It includes RetroPie's main `retroarch.cfg`, then turns off audio sync and vsync and sets an unlimited fast-forward rate.
+**`retroarch.cfg`** is the Electron's own RetroArch settings file. It includes RetroPie's main `retroarch.cfg`, then turns off audio sync and vsync and sets an unlimited fast-forward rate. **These settings are my personal preferences, so you may not need them.**
+
+The launcher does need *a* `retroarch.cfg` in `/opt/retropie/configs/electron/`, because it starts RetroArch with that file (the Electron isn't a standard RetroPie system, so nothing else creates one). If you don't want my settings, create a plain one that just uses RetroPie's main settings:
+
+```bash
+echo '#include "/opt/retropie/configs/all/retroarch.cfg"' > /opt/retropie/configs/electron/retroarch.cfg
+```
+
+The ZX Spectrum and Game & Watch launchers use those systems' own `retroarch.cfg`, which RetroPie already provides.
 
 ### ZX Spectrum - `mess-zx.sh`
 
